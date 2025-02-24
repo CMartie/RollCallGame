@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 
 
 
@@ -34,21 +35,23 @@ public class clydeMoveForce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // randomClydeForce();
+        // randomClydeForce();
 
         /*  foreach(clydeMoveForce clyde in clydes)
           {
               clyde.randomClydeForce();
               Debug.Log("I am adding force to clydes");
           }*/
+        //Explode();
+
     }
     public void randomClydeForce()
     {
 
         Vector3 randomPosition = Vector3.zero;
-        randomPosition.x = Random.Range(-5f, 5f);
-        randomPosition.y = Random.Range(.5f, 3f);
-        randomPosition.z = Random.Range(-5f, 5f);
+        randomPosition.x = Random.Range(-6f, 6f);
+        randomPosition.y = Random.Range(.5f, 6f);
+        randomPosition.z = Random.Range(-6f, 6f);
 
         //this.gameObject.transform.position += randomPosition * speed *Time.deltaTime;
         // clydePrefab.gameObject.GetComponent<Rigidbody>().AddForce(randomPosition * speed * Time.deltaTime);
@@ -60,6 +63,10 @@ public class clydeMoveForce : MonoBehaviour
         Invoke("randomClydeForce", forceTimeGapMin);
 
     }
-    
-        
+    public void Explode()
+    {
+        Destroy(this.gameObject);
+    }
+
+
 }
