@@ -1,5 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
+
+
 
 public class spawnClydes : MonoBehaviour
 {
@@ -10,11 +13,15 @@ public class spawnClydes : MonoBehaviour
 
     // public int numberOfClydes = 20;
     public int clydeSpawnAmount = 20;
+
+    public List<clydeMoveForce> clydes = new List<clydeMoveForce>();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spawnRandomClydes();
-
+        
+        
     }
 
     // Update is called once per frame
@@ -45,7 +52,10 @@ public class spawnClydes : MonoBehaviour
             randomPosition.z = Random.Range(8f, -34f);
 
             GameObject newClyde = Instantiate(clyde, randomPosition, Quaternion.identity);
-           // GameObject newClyde = Instantiate(clyde.transform.rotation(-90,0,0), randomPosition, Quaternion.identity);
+            // GameObject newClyde = Instantiate(clyde.transform.rotation(-90,0,0), randomPosition, Quaternion.identity;
+            clydes.Add(newClyde.GetComponent<clydeMoveForce>());
+
+
         }
 
     }
