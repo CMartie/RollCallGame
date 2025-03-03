@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using JetBrains.Annotations;
 
 
 
@@ -14,27 +15,43 @@ public class clydeMoveForce : MonoBehaviour
     // public GameObject clydePrefab;
     float forceTimeGapMin = 1f;
     float forceTimegapmax = 3f;
+    public int explodeNumber;
+    float maxTimerforBomb = 25f;
+    float minTimerforBomb = 2f;
+    float randomBombTime;
 
 
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        randomBombTime = Random.Range(minTimerforBomb, maxTimerforBomb);
+
         Invoke("randomClydeForce", forceTimeGapMin);
 
-       // randomClydeForce();
+        explodeNumber = Random.Range(1, 11);
 
-        /*foreach (clydeMoveForce clyde in clydes)
-        {
-            clyde.randomClydeForce();
-            Debug.Log("I am adding force to clydes");
-        }*/
+        Invoke("ExplodeClydes", randomBombTime);
 
-    }
+
+       
+        Debug.Log("this is my variable" + explodeNumber);
+
+    // randomClydeForce();
+
+    /*foreach (clydeMoveForce clyde in clydes)
+    {
+        clyde.randomClydeForce();
+        Debug.Log("I am adding force to clydes");
+    }*/
+
+}
 
     // Update is called once per frame
     void Update()
     {
+        //ExplodeClydes();
+
         // randomClydeForce();
 
         /*  foreach(clydeMoveForce clyde in clydes)
@@ -60,12 +77,33 @@ public class clydeMoveForce : MonoBehaviour
 
         this.gameObject.GetComponent<Rigidbody>().AddForce(randomPosition * forceStrength);
 
-        Invoke("randomClydeForce", forceTimeGapMin);
+        float randomTimeGap = Random.Range(forceTimeGapMin, forceTimegapmax);
+
+        Invoke("randomClydeForce", randomTimeGap);
 
     }
-    public void Explode()
+    
+    public void ExplodeClydes()
     {
-        Destroy(this.gameObject);
+        Debug.Log("explode function ran");
+
+        if (explodeNumber == 5)
+        {
+      
+            this.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            Debug.Log("im dead");
+            
+            
+        }
+        //Invoke("ExplodeClydes", randomBombTime);
+
+        /* int clydesThatDie = Random.Range(0, clydes.Count);
+         clydes[clydesThatDie].Explode();*/
+
+        //  clydes.RemoveAt(clydesThatDie);
+        //timeRange = Random.Range(2f, 25f);
+
+        // Invoke("ExplodeClydes");
     }
 
 

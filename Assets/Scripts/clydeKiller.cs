@@ -1,4 +1,4 @@
-using NUnit.Framework;
+
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,16 @@ public class clydeKiller : MonoBehaviour
 {
     public List<clydeMoveForce> clydes = new List<clydeMoveForce>();
    
-    public clydeMoveForce whatHasExplode;
+    private clydeMoveForce whatHasExplode;
 
     float timeRange;
+
+    public clydeMoveForce clydeController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       // Invoke("ExplodeClydes");
 
     }
 
@@ -26,12 +29,18 @@ public class clydeKiller : MonoBehaviour
 
     public void ExplodeClydes()
     {
-        int clydesThatDie = Random.Range(0, clydes.Count);
-        clydes[clydesThatDie].Explode();
-        clydes.RemoveAt(clydesThatDie);
+        if(clydeController.explodeNumber == 5)
+        {
+            this.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+        }
+       /* int clydesThatDie = Random.Range(0, clydes.Count);
+        clydes[clydesThatDie].Explode();*/
+
+      //  clydes.RemoveAt(clydesThatDie);
         timeRange = Random.Range(2f, 25f);
 
-        //Invoke("ExplodeClydes"
+       // Invoke("ExplodeClydes");
     }
 
 }

@@ -44,7 +44,7 @@ public class spawnClydes : MonoBehaviour
         clydeSpawnAmount = Random.Range(clydeMin, clydeMax + 1);
         for (int count = 0; count < clydeSpawnAmount; count++)
         {
-            Debug.Log("i started running the code");
+            
 
             Vector3 randomPosition = Vector3.zero;
             randomPosition.x = Random.Range(100f, 60f);
@@ -54,6 +54,8 @@ public class spawnClydes : MonoBehaviour
             GameObject newClyde = Instantiate(clyde, randomPosition, Quaternion.identity);
             // GameObject newClyde = Instantiate(clyde.transform.rotation(-90,0,0), randomPosition, Quaternion.identity;
             clydes.Add(newClyde.GetComponent<clydeMoveForce>());
+
+            
 
 
         }
