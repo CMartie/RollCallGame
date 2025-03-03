@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 
 
@@ -15,12 +16,14 @@ public class spawnClydes : MonoBehaviour
     public int clydeSpawnAmount = 20;
 
     public List<clydeMoveForce> clydes = new List<clydeMoveForce>();
+    public List<clydeMoveForce> clydePrefabs = new List<clydeMoveForce>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnRandomClydes();
         
+        spawnRandomClydes();
+       // GameObject.FindGameObjectsWithTag("clyde").ToList();
         
     }
 

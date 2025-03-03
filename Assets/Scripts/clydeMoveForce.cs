@@ -3,7 +3,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using JetBrains.Annotations;
+
+
 
 
 
@@ -12,6 +13,7 @@ public class clydeMoveForce : MonoBehaviour
    // public GameObject clyde;
     public float speed = 4f;
     public List<clydeMoveForce> clydes = new List<clydeMoveForce>();
+    public List<clydeMoveForce> clyde = new List<clydeMoveForce>();
     // public GameObject clydePrefab;
     float forceTimeGapMin = 1f;
     float forceTimegapmax = 3f;
@@ -25,6 +27,11 @@ public class clydeMoveForce : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //clyde= FindObjectsByType<clydeMoveForce>(FindObjectsSortMode.None).ToList();
+        GameObject.FindGameObjectsWithTag("clyde").ToList();
+
+
+
         randomBombTime = Random.Range(minTimerforBomb, maxTimerforBomb);
 
         Invoke("randomClydeForce", forceTimeGapMin);
@@ -50,6 +57,17 @@ public class clydeMoveForce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      /* for(int i = 0; i < clydes.Count; i++)
+        {
+            if(clydes[i] == null)
+            {
+                clydes.RemoveAt(i);
+                Debug.Log("forloop is working");
+
+            }
+
+        }*/
+
         //ExplodeClydes();
 
         // randomClydeForce();
@@ -92,7 +110,7 @@ public class clydeMoveForce : MonoBehaviour
       
             this.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
             Debug.Log("im dead");
-            
+            Destroy(this.gameObject);
             
         }
         //Invoke("ExplodeClydes", randomBombTime);

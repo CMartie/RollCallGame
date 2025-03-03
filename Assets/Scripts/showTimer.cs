@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
+using System.Linq;
+using System.Collections.Generic;
 public class showTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
     public GameObject timesUp;
-
+    public List<clydeMoveForce> clydePrefabs = new List<clydeMoveForce>();
 
     public float timeImageOnScreen = 2f;
    public float timeImageOff = 0f;
@@ -27,9 +29,9 @@ public class showTimer : MonoBehaviour
         else if (remainingTime <= 0)
         {
             remainingTime = 0;
-           
+           timesUpImage();
             Destroy(timerText.gameObject);
-            timesUpImage();
+            
         }
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
@@ -39,6 +41,8 @@ public class showTimer : MonoBehaviour
 
     public void timesUpImage()
     {
+        GameObject.FindGameObjectsWithTag("clyde").ToList();
+
         timesUp.SetActive(true);
 
         timeImageOnScreen -= Time.deltaTime;

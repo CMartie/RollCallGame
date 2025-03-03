@@ -618,6 +618,7 @@ MonoBehaviour:
   timerText: {fileID: 167486914}
   remainingTime: 30
   timesUp: {fileID: 870494137}
+  clydePrefabs: []
   timeImageOnScreen: 2
   timeImageOff: 0
 --- !u!1001 &235747986
@@ -1734,6 +1735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 870494138}
+  - component: {fileID: 870494139}
   m_Layer: 0
   m_Name: TimesUp!
   m_TagString: Untagged
@@ -1757,6 +1759,24 @@ Transform:
   - {fileID: 1865579617}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &870494139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870494137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06531d6c0a8685b4f98d8ef081ba6c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 167486914}
+  remainingTime: 0
+  timesUp: {fileID: 355012200}
+  clydePrefabs: []
+  timeImageOnScreen: 2
+  timeImageOff: 0
 --- !u!1001 &928904201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2438,12 +2458,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262863786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73a49035edaf4a44fbabc90c22c451dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clydes: []
+  clydeController: {fileID: 0}
 --- !u!1 &1265423960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,6 +3060,7 @@ MonoBehaviour:
   clyde: {fileID: 5094664846116942627, guid: ebc62af8e8fb9fd4d86e7c18186d0db9, type: 3}
   clydeSpawnAmount: 20
   clydes: []
+  clydePrefabs: []
 --- !u!1001 &1471569997
 PrefabInstance:
   m_ObjectHideFlags: 0
